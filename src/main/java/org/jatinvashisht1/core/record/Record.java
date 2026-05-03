@@ -1,4 +1,4 @@
-package org.jatinvashisht1.core;
+package org.jatinvashisht1.core.record;
 
 public class Record {
     private final String key;
