@@ -1,5 +1,7 @@
 package org.jatinvashisht1.core.networking;
 
+import org.jatinvashisht1.core.commandexecutors.CommandExecutor;
+import org.jatinvashisht1.core.commandexecutors.CommandRouter;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
 import java.io.*;
@@ -37,7 +39,15 @@ public class ClientHandler implements Runnable{
                     clientSocket.close();
                     break;
                 } else {
-                    printWriter.println("ERR Unknown Command");
+                    try {
+                        CommandExecutor commandExecutor = CommandRouter.parse(cleanLine, storageEngine);
+                        String response = commandExecutor.executeCommand();
+                        printWriter.println(response);
+                    } catch (IllegalArgumentException ex) {
+                        printWriter.println("ERR " + ex.getMessage());
+                    } catch (Exception ex) {
+                        printWriter.println("ERR Internal Server Error");
+                    }
                 }
             }
 

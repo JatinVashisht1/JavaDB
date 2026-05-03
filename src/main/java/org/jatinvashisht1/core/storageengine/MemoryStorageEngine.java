@@ -1,25 +1,25 @@
 package org.jatinvashisht1.core.storageengine;
 
-import org.jatinvashisht1.core.record.Record;
+import org.jatinvashisht1.core.record.DbRecord;
 
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MemoryStorageEngine implements StorageEngine{
-    private final ConcurrentHashMap<String, org.jatinvashisht1.core.record.Record> memoryStore = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, DbRecord> memoryStore = new ConcurrentHashMap<>();
 
     @Override
-    public org.jatinvashisht1.core.record.Record putRecord(String key, org.jatinvashisht1.core.record.Record record) throws IllegalArgumentException{
-        if (key == null || record == null) throw new IllegalArgumentException("Key and Record cannot be null");
-        memoryStore.put(key, record);
-        return record;
+    public DbRecord putRecord(String key, DbRecord dbRecord) throws IllegalArgumentException{
+        if (key == null || dbRecord == null) throw new IllegalArgumentException("Key and DbRecord cannot be null");
+        memoryStore.put(key, dbRecord);
+        return dbRecord;
     }
 
     @Override
-    public org.jatinvashisht1.core.record.Record getRecord(String key) throws IllegalArgumentException {
+    public DbRecord getRecord(String key) throws IllegalArgumentException {
         if (key == null) throw new IllegalArgumentException("Key cannot be null");
-        Record record = memoryStore.get(key);
-        if (record != null) record.markLastAccessedAt();
-        return record;
+        DbRecord dbRecord = memoryStore.get(key);
+        if (dbRecord != null) dbRecord.markLastAccessedAt();
+        return dbRecord;
     }
 
     @Override

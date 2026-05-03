@@ -1,15 +1,13 @@
 package org.jatinvashisht1.core.record;
 
-public class Record {
-    private final String key;
+public class DbRecord {
     private Object value;
     private final long createdAt;
     private long updatedAt;
     private long lastAccessedAt;
     private final RecordDataType dataType;
 
-    public Record(String key, RecordDataType dataType, Object value) {
-        this.key = key;
+    public DbRecord(RecordDataType dataType, Object value) {
         this.dataType = dataType;
         this.value = value;
 
@@ -25,10 +23,6 @@ public class Record {
 
     public long getLastAccessedAt() {
         return lastAccessedAt;
-    }
-
-    public String getKey() {
-        return key;
     }
 
     public long getCreatedAt() {
