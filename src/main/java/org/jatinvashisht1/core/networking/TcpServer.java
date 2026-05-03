@@ -1,6 +1,5 @@
-package org.jatinvashisht1.core;
+package org.jatinvashisht1.core.networking;
 
-import org.jatinvashisht1.core.storageengine.MemoryStorageEngine;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
 import java.io.IOException;

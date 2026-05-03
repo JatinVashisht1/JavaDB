@@ -1,10 +1,9 @@
-package org.jatinvashisht1.core;
+package org.jatinvashisht1.core.networking;
 
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
 
 public class ClientHandler implements Runnable{
     private final Socket clientSocket;
