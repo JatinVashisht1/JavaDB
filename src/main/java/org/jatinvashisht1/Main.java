@@ -1,3 +1,5 @@
+package org.jatinvashisht1;
+
 import org.jatinvashisht1.core.networking.TcpServer;
 import org.jatinvashisht1.core.storageengine.MemoryStorageEngine;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
