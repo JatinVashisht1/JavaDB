@@ -47,6 +47,13 @@ public class CommandRouter {
                 String value = tokens[2];
                 return new RPushCommandExecutor(storageEngine, key, value);
             }
+            case "LRANGE": {
+                if (tokens.length != 2) {
+                    throw new IllegalArgumentException("LRANGE command requires exactly 1 argument");
+                }
+                String key = tokens[1];
+                return new LRangeCommandExecutor(storageEngine, key);
+            }
             default: {
                 throw new IllegalArgumentException("Unsupported command: " + commandName);
             }
