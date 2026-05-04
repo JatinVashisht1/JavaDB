@@ -23,6 +23,14 @@ public class CommandRouter {
                 String value = tokens[2];
                 return new SetCommandExecutor(storageEngine, key, value);
             }
+            case "GET": {
+                if (tokens.length != 2) {
+                    throw new IllegalArgumentException("GET command requires exactly 1 argument");
+                }
+
+                String key = tokens[1];
+                return new GetCommandExecutor(storageEngine, key);
+            }
             default: {
                 throw new IllegalArgumentException("Unsupported command: " + commandName);
             }
