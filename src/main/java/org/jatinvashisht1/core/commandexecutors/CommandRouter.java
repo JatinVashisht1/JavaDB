@@ -31,6 +31,22 @@ public class CommandRouter {
                 String key = tokens[1];
                 return new GetCommandExecutor(storageEngine, key);
             }
+            case "DEL": {
+                if (tokens.length != 2) {
+                    throw new IllegalArgumentException("DEL command requires exactly 1 argument");
+                }
+
+                String key = tokens[1];
+                return new DelCommandExecutor(storageEngine, key);
+            }
+            case "RPUSH": {
+                if (tokens.length != 3) {
+                    throw new IllegalArgumentException("RPUSH command requires exactly 2 arguments");
+                }
+                String key = tokens[1];
+                String value = tokens[2];
+                return new RPushCommandExecutor(storageEngine, key, value);
+            }
             default: {
                 throw new IllegalArgumentException("Unsupported command: " + commandName);
             }

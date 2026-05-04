@@ -23,9 +23,9 @@ public class MemoryStorageEngine implements StorageEngine{
     }
 
     @Override
-    public void deleteRecord(String key) throws  IllegalArgumentException{
+    public DbRecord deleteRecord(String key) throws  IllegalArgumentException{
         if (key == null) throw new IllegalArgumentException("Key cannot be null");
-        memoryStore.remove(key);
+        return memoryStore.remove(key);
     }
 
     @Override
