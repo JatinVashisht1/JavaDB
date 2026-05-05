@@ -1,5 +1,6 @@
 package org.jatinvashisht1.core.networking;
 
+import org.jatinvashisht1.aofmanager.AofManager;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
 import java.io.IOException;
@@ -10,12 +11,14 @@ import java.net.SocketException;
 public class TcpServer {
     private final int port;
     private final StorageEngine memoryStorageEngine;
+    private final AofManager aofManager;
     private boolean isRunning = false;
     private ServerSocket serverSocket;
 
-    public TcpServer(StorageEngine storageEngine, int port) throws IOException {
+    public TcpServer(StorageEngine storageEngine, int port, AofManager aofManager) throws IOException {
         this.memoryStorageEngine = storageEngine;
         this.port = port;
+        this.aofManager = aofManager;
     }
 
     public void start() throws IOException {
@@ -27,7 +30,7 @@ public class TcpServer {
         try {
             while (isRunning) {
                 Socket socket = serverSocket.accept();
-                Thread.startVirtualThread(new ClientHandler(socket, memoryStorageEngine));
+                Thread.startVirtualThread(new ClientHandler(socket, memoryStorageEngine, aofManager));
             }
         } catch (SocketException ex) {
             if (!isRunning) {

@@ -6,7 +6,7 @@ import org.jatinvashisht1.core.storageengine.StorageEngine;
 
 import java.util.List;
 
-public class LRangeCommandExecutor implements CommandExecutor{
+public class LRangeCommandExecutor implements ICommandExecutor {
     private static final RecordDataType LIST_DATA_TYPE = RecordDataType.LIST;
     private final String key;
     private final StorageEngine storageEngine;

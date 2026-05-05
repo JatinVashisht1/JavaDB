@@ -2,10 +2,10 @@ package org.jatinvashisht1.core.commandexecutors;
 
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
-public class CommandRouter {
-    private static final String WHITESPACE_REGEX = "\\s+";
+import static org.jatinvashisht1.constants.Constants.WHITESPACE_REGEX;
 
-    public static CommandExecutor parse(String command, StorageEngine storageEngine) {
+public class CommandRouter {
+    public static ICommandExecutor parse(String command, StorageEngine storageEngine) {
         String[] tokens = command.split(WHITESPACE_REGEX);
 
         if (tokens.length == 0 || tokens[0].isEmpty()) {

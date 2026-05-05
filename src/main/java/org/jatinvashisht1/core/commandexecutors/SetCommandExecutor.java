@@ -4,7 +4,7 @@ import org.jatinvashisht1.core.record.DbRecord;
 import org.jatinvashisht1.core.record.RecordDataType;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
-public class SetCommandExecutor implements CommandExecutor{
+public class SetCommandExecutor implements ICommandExecutor {
     private final StorageEngine storageEngine;
     private final static RecordDataType STRING_DATA_TYPE = RecordDataType.STRING;
     private final String key;

@@ -3,7 +3,7 @@ package org.jatinvashisht1.core.commandexecutors;
 import org.jatinvashisht1.core.record.DbRecord;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
 
-public class GetCommandExecutor implements CommandExecutor{
+public class GetCommandExecutor implements ICommandExecutor {
     private final String key;
     private final StorageEngine storageEngine;
 

@@ -1,5 +1,6 @@
 package org.jatinvashisht1;
 
+import org.jatinvashisht1.aofmanager.AofManager;
 import org.jatinvashisht1.core.networking.TcpServer;
 import org.jatinvashisht1.core.storageengine.MemoryStorageEngine;
 import org.jatinvashisht1.core.storageengine.StorageEngine;
@@ -14,7 +15,9 @@ public class Main {
         int port = 6380;
 
         try {
-            TcpServer server = new TcpServer(memoryEngine, port);
+            AofManager aofManager = new AofManager(memoryEngine);
+            aofManager.replay();
+            TcpServer server = new TcpServer(memoryEngine, port, aofManager);
             server.start();
         } catch (IOException e) {
             System.err.println("CRITICAL FATAL: Failed to bind to port " + port);

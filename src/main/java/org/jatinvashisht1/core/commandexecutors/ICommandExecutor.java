@@ -1,5 +1,5 @@
 package org.jatinvashisht1.core.commandexecutors;
 
-public interface CommandExecutor {
+public interface ICommandExecutor {
     String executeCommand();
 }

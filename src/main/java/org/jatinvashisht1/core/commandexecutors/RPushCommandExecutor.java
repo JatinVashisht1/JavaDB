@@ -7,7 +7,7 @@ import org.jatinvashisht1.core.storageengine.StorageEngine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RPushCommandExecutor implements CommandExecutor{
+public class RPushCommandExecutor implements ICommandExecutor {
     private final static RecordDataType LIST_DATA_TYPE = RecordDataType.LIST;
     private final String key;
     private final String value;
