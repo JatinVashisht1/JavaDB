@@ -54,6 +54,22 @@ public class CommandRouter {
                 String key = tokens[1];
                 return new LRangeCommandExecutor(storageEngine, key);
             }
+            case "EXPIRE": {
+                try {
+                    if (tokens.length != 3) {
+                        throw new IllegalArgumentException("EXPIRE command requires exactly 2 arguments");
+                    }
+
+                    String key = tokens[1];
+                    String expireAfterString = tokens[2];
+                    Long expireAfter = Long.getLong(expireAfterString);
+
+                    return new ExpireCommandExecutor(key, storageEngine, expireAfter);
+                } catch (NumberFormatException ex) {
+                    System.out.println("Exception in parsing ttl " + tokens[2] + " " + ex.getMessage());
+                    throw new IllegalArgumentException("EXPIRE timestamp should be a number");
+                }
+            }
             default: {
                 throw new IllegalArgumentException("Unsupported command: " + commandName);
             }

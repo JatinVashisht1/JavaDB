@@ -6,5 +6,6 @@ public interface StorageEngine {
     DbRecord putRecord(String key, DbRecord dbRecord);
     DbRecord getRecord(String key);
     DbRecord deleteRecord(String key);
+    boolean expireRecord(String key, long expiresAtMillis);
     boolean keyExists(String key);
 }

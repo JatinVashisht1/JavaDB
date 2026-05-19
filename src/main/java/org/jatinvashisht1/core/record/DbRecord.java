@@ -5,6 +5,7 @@ public class DbRecord {
     private final long createdAt;
     private long updatedAt;
     private long lastAccessedAt;
+    private long expireAt;
     private final RecordDataType dataType;
 
     public DbRecord(RecordDataType dataType, Object value) {
@@ -41,6 +42,14 @@ public class DbRecord {
         validateTypeMatch(value);
         this.value = value;
         this.updatedAt = System.currentTimeMillis();
+    }
+
+    public long getExpireAt() {
+        return expireAt;
+    }
+
+    public void setExpireAt(long timestamp) {
+        this.expireAt = timestamp;
     }
 
     public void markLastAccessedAt() {

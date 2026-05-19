@@ -33,4 +33,15 @@ public class MemoryStorageEngine implements StorageEngine{
         if (key == null) throw new IllegalArgumentException("Key cannot be null");
         return memoryStore.containsKey(key);
     }
+
+    @Override
+    public boolean expireRecord(String key, long expiresAt) throws IllegalArgumentException {
+        if (key == null || expiresAt < 0) throw new IllegalArgumentException("Key cannot be null and expiresAt timestamp cannot be negative");
+        DbRecord updatedRecord = memoryStore.computeIfPresent(key, (k, record) -> {
+           record.setExpireAt(expiresAt);
+           return record;
+        });
+
+        return updatedRecord != null;
+    }
 }

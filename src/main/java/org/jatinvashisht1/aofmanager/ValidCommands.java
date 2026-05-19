@@ -4,4 +4,5 @@ public enum ValidCommands {
     SET,
     DEL,
     RPUSH,
+    EXPIRE
 };
